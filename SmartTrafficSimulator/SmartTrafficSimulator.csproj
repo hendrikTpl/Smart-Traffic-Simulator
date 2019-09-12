@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B8FF55F8-9B94-45DA-8ABA-A487D9F649F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartTrafficSimulator</RootNamespace>
+    <AssemblyName>SmartTrafficSimulator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>88FCD2E73BBD56FB850030E769B85F320A7E074E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SmartTrafficSimulator_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\PoissonDistribution.cs" />
+    <Compile Include="Models\ReservationTimeCalculation.cs" />
+    <Compile Include="Models\TrafficVolumePrediction.cs" />
+    <Compile Include="OptimizationModels\OptimizationAdjustment\AdaptiveAdjustment.cs" />
+    <Compile Include="OptimizationModels\AIConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptimizationModels\AIConfig.Designer.cs">
+      <DependentUpon>AIConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptimizationModels\GA\GA_Parameters.cs" />
+    <Compile Include="OptimizationModels\GA_TestMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptimizationModels\GA_TestMode.Designer.cs">
+      <DependentUpon>GA_TestMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptimizationModels\GA_Ver.YO\Direction.cs" />
+    <Compile Include="OptimizationModels\GA_Ver.YO\Map_initial.cs" />
+    <Compile Include="OptimizationModels\GA_Ver.YO\Optimization_GA_YO.cs" />
+    <Compile Include="OptimizationModels\GA_Ver.YO\Result.cs" />
+    <Compile Include="OptimizationModels\GA_Ver.YO\SetResult.cs" />
+    <Compile Include="OptimizationModels\GA_Ver.YO\TSC_GA.cs" />
+    <Compile Include="OptimizationModels\Other\Optimization_GT.cs" />
+    <Compile Include="SystemManagers\AIManager.cs" />
+    <Compile Include="SystemManagers\TaskManager.cs" />
+    <Compile Include="Models\IntelligentDriverModel.cs" />
+    <Compile Include="SystemObject\Road\RoadInfo.cs" />
+    <Compile Include="SystemObject\Data\VehicleRecord.cs" />
+    <Compile Include="OptimizationModels\GA\GA_chromosome.cs" />
+    <Compile Include="OptimizationModels\GA\Optimization_GA.cs" />
+    <Compile Include="OptimizationModels\TrafficOptimization.cs" />
+    <Compile Include="SystemObject\Simulation\TrafficDataWriter.cs" />
+    <Compile Include="UI\DataOutput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DataOutput.Designer.cs">
+      <DependentUpon>DataOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MapEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MapEditor.designer.cs">
+      <DependentUpon>MapEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemObject\Simulation\SimulatorFileWriter.cs" />
+    <Compile Include="UI\SimulationTaskManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SimulationTaskManage.Designer.cs">
+      <DependentUpon>SimulationTaskManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemObject\Simulation\SimulationTask.cs" />
+    <Compile Include="SystemObject\Vehicle\DrivePath.cs" />
+    <Compile Include="SystemObject\Simulation\SimulatorFileReader.cs" />
+    <Compile Include="SystemObject\Road\SignalConfig.cs" />
+    <Compile Include="SystemObject\Data\OptimizationRecord.cs" />
+    <Compile Include="UI\VehicleConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\VehicleConfig.Designer.cs">
+      <DependentUpon>VehicleConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CarInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CarInformation.Designer.cs">
+      <DependentUpon>CarInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IntersectionConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\IntersectionConfig.Designer.cs">
+      <DependentUpon>IntersectionConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SimulatorConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SimulatorConfig.Designer.cs">
+      <DependentUpon>SimulatorConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemObject\Data\CycleRecord.cs" />
+    <Compile Include="SystemManagers\DataManager.cs" />
+    <Compile Include="UI\TrafficDataDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TrafficDataDisplay.Designer.cs">
+      <DependentUpon>TrafficDataDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TrafficSignalConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TrafficSignalConfig.Designer.cs">
+      <DependentUpon>TrafficSignalConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainUI.Designer.cs">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManagers\IntersectionManager.cs" />
+    <Compile Include="SystemManagers\RoadManager.cs" />
+    <Compile Include="SystemManagers\PrototypeManager.cs" />
+    <Compile Include="SystemManagers\Simulator.cs" />
+    <Compile Include="SystemManagers\VehicleManager.cs" />
+    <Compile Include="SystemObject\Vehicle\Vehicle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SystemObject\Signal\Signal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SystemObject\Road\Intersection.cs" />
+    <Compile Include="SystemObject\Road\Road.cs" />
+    <Compile Include="SystemObject\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\VehicleDataDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\VehicleDataDisplay.Designer.cs">
+      <DependentUpon>VehicleDataDisplay.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="OptimizationModels\AIConfig.resx">
+      <DependentUpon>AIConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptimizationModels\GA_TestMode.resx">
+      <DependentUpon>GA_TestMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataOutput.resx">
+      <DependentUpon>DataOutput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapEditor.resx">
+      <DependentUpon>MapEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SimulationTaskManage.resx">
+      <DependentUpon>SimulationTaskManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VehicleConfig.resx">
+      <DependentUpon>VehicleConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CarInformation.resx">
+      <DependentUpon>CarInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\IntersectionConfig.resx">
+      <DependentUpon>IntersectionConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SimulatorConfig.resx">
+      <DependentUpon>SimulatorConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TrafficDataDisplay.resx">
+      <DependentUpon>TrafficDataDisplay.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TrafficSignalConfig.resx">
+      <DependentUpon>TrafficSignalConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainUI.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VehicleDataDisplay.resx">
+      <DependentUpon>VehicleDataDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\SmartCitySimulator.SystemUnit.IntersectionManager.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SmartTrafficSimulator_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AutoSimulation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataMode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DemoMode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Full.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Full2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntersectionConfig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Light_Green.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Light_Red.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Light_State_Green.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Light_State_Null.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Light_State_Red.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Light_State_Yellow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LightConfig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Normal2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restart2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SimulatorConfig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpeedAdjust.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle45.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle135.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle225.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle270.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicle315.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VehicleConfig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Light_Yellow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NextSimulation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SimulationTaskManagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NextSimulation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SimulationTaskManagement1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Blue2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Green2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Red2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State_Yellow2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sync.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntersectionConfig2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trafficData.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicleData.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\AITest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Simulation_Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataSave.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
